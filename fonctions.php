@@ -8,7 +8,7 @@
  * @return PDO
  */
 function get_pdo(): PDO {
-    return new PDO('mysql:host=localhost;dbname=ppe1', 'root', '', [
+    return new PDO('mysql:host=localhost;dbname=ppe1', 'root', 'root', [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
@@ -20,7 +20,7 @@ function get_pdo(): PDO {
 =========================================*/
 function requete($sql){
 echo $sql;
-	$cnx=mysqli_connect("localhost","root","","ppe1");
+	$cnx=mysqli_connect("localhost","root","root","ppe1");
 	$res=mysqli_query($cnx,$sql);
 	$tab=explode(" ", $sql);
 	$action=$tab[0];
@@ -89,6 +89,18 @@ function supprimer($nomTable, $id) {
 	$nomId=getPK($nomTable);
 	$sql="DELETE FROM ".$nomTable." WHERE ".$nomId."=".$id;
 	return requete($sql);
+}
+
+function dd(...$vars){
+    foreach($vars as $var){
+    echo '<pre>';
+    print_r($var);
+    echo '</pre>';
+    }
+}
+
+function h(string $value){
+    return htmlentities($value);
 }
 
 /********************************************************

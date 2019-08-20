@@ -3,7 +3,9 @@
 $pdo = get_pdo();
 
 $req = $pdo->query("SELECT * FROM salles");
-$salles = $req->fetchall(); ?>
+$salles = $req->fetchall(); 
+// dd($salles);
+?>
 
 <?php
     include("header.php");
@@ -27,13 +29,18 @@ $salles = $req->fetchall(); ?>
                 <th scope="row"><?= $salles['nom_salle'] ;?></th>
                 <td><?= $salles['id_salle'];?></td>
                 <td><?= $salles['nb_places'];?></td>
-                <td><?= informatisee($salles)? '<i class="fas fa-satellite-dish"></i>' : '';?></td>
+                <td><?php if(informatisee($salles)) {
+                       echo '<i class="fas fa-satellite-dish" 
+                            <span style="font-weight: solid;">
+                            <span style="color: Mediumslateblue;">
+                            </span></i>'
+                           ;}
+                    ?>
+                </td>
             </tr>
          <?php endforeach; ?>
 </tbody>
-                
-                
+
 <?php
     include("footer.php");
-
  ?>
