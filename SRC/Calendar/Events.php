@@ -53,7 +53,11 @@ class Events {
      * @throws  \Exception
      */
     public function find(int $id): array {
-       return $this->pdo->query("SELECT * FROM reservations join salles on reservations.id_salle = salles.id_salle WHERE id_resa = $id LIMIT 1")->fetch();
+       $result = $this->pdo->query("SELECT * FROM reservations join salles on reservations.id_salle = salles.id_salle WHERE id_resa = $id LIMIT 1")->fetch();
+       if($result === false){
+           Throw new \Exception("Aucun résultat n'a été trouvé .. ");
+       }
+       return $result;
     }
 }   
 

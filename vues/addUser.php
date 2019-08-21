@@ -1,8 +1,7 @@
 <?php
 
 $pdo = get_pdo();
-
-$req = $pdo->query("SELECT * FROM ligues where id_ligue != 1 ");
+$req = $pdo->query("SELECT * FROM ligues where id_ligue > '01' ");
 $ligues = $req->fetchall(); ?>
 <div class="jumbotron">
 <form action="index.php?action=ajoutUser" method="post">

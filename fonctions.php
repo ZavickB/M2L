@@ -99,10 +99,17 @@ function dd(...$vars){
     }
 }
 
-function h(string $value){
+function h(?string $value):string {
+    if($value === null){
+        return '';
+    }
     return htmlentities($value);
 }
 
+function e404(){
+    require("vues/404.php");
+    exit();
+}
 /********************************************************
 *** FONCTIONS METIER ************************************
 ********************************************************/
@@ -152,7 +159,7 @@ function getLigues(){
 
 function reservee(array $salles): bool{
     $pdo = get_pdo();
-    $req = $pdo->prepare("SELECT * FROM reservation WHERE NOW() BETWEEN hr_debut AND hr_fin AND id_salle=?");
+    $req = $pdo->prepare("SELECT * FROM reservation WHERE NOW() BETWEEN hr_debut AND hr_fin ");
     $req->execute([$salles['id']]);
     $reservation = $req->fetch();
     if($reservation){

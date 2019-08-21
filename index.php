@@ -66,6 +66,7 @@ switch($_GET['action']) {
         include('vues/event.php');
         include('vues/footer.php');
     break;
-}
 
+}
+    
 ?>

@@ -17,3 +17,8 @@
 body {
     background-image: url(../../images/back.jpg)
 }
+
+/* 404 */ 
+.error {
+    margin-top: 100px;
+}
