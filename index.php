@@ -7,7 +7,9 @@ if(!isset($_GET['action'])){
 
 switch($_GET['action']) {
     case "home":
+        include('vues/header.php');
         include('vues/home.php');
+        include('vues/footer.php');
     break;
 
     case "auth":
@@ -17,18 +19,22 @@ switch($_GET['action']) {
             header("Location: index.php?action=home");
         }
         else {
-          include('vues/logging.php');
+        include('vues/header.php');
+        include('vues/logging.php');
+        include('vues/footer.php');;
         }
     break;
 
     case "disconnect":
         unset($_SESSION['auth']);
-        header("Location: index.php?action=affSalles");
+        header("Location: index.php?action=home");
     break;
 
     case "addUser":
         $tabligues=getLigues();
+        include('vues/header.php');
         include('vues/addUser.php');
+        include('vues/footer.php');
     break ;
     
     case "ajoutUser":
@@ -38,15 +44,27 @@ switch($_GET['action']) {
     break ;
         
     case "affSalles":
+        include('vues/header.php');
         include('vues/affSalles.php');
+        include('vues/footer.php');
     break;
 
     case "formAuth":
+        include('vues/header.php');
         include('vues/logging.php');
+        include('vues/footer.php');
     break;
     
     case "calendar":
+        include('vues/header.php');
         include('vues/calendar.php');
+        include('vues/footer.php');
+    break;
+    
+    case "event":
+        include('vues/header.php');
+        include('vues/event.php');
+        include('vues/footer.php');
     break;
 }
 

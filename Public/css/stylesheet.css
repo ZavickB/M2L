@@ -1,10 +1,19 @@
+
+ /* The navigation bar */
 .navbar {
-  position: relative;
-  min-height: 50px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 }
-.navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+
+/* Main content */
+.main {
+  margin-top: 40px; /* Add a top margin to avoid content overlay */
+} 
+
+/* BackGround */
+body {
+    background-image: url(../../images/back.jpg)
 }

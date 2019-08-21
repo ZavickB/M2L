@@ -1,10 +1,7 @@
 <?php
-require '../SRC/bootstrap.php';
-require '../fonctions.php';
 //dd($_GET, $_POST);
 $pdo = get_pdo();
-require '../SRC/Calendar/Events.php';
-require '../vues/header.php';
+require 'SRC/Calendar/Events.php';
 $events = new Calendar\Events($pdo);
 
 if(!isset($_GET['id'])) { 
@@ -46,7 +43,3 @@ if(!isset($_GET['id'])) {
             </div></div>
     </li>
 </ul>
-
-
-
-<?php require '../vues/footer.php' ;?>

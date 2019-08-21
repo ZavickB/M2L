@@ -1,6 +1,3 @@
-<?php
-include("header.php");
-?>
 
 <div class="jumbotron">
     <h3>Bienvenue sur le site web de la maison des ligues de Lorraine</h3>
@@ -20,7 +17,3 @@ include("header.php");
     </ul>
     
 </div>
-
-<?php
-    include("footer.php");
-?>

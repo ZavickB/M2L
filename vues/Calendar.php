@@ -1,6 +1,4 @@
 <?php
-    include 'header.php';
-        require 'SRC/bootstrap.php';
         require 'SRC/Calendar/Month.php';
         require 'SRC/Calendar/Events.php';
         $pdo = get_pdo();
@@ -16,7 +14,7 @@
         echo'</pre>';  
  */
         ?>
-        
+<div class="jumbotron"> 
 <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
         <h1><?= $month->toString(); ?></h1>
         <div>
@@ -39,7 +37,7 @@
                         <div class="calendar__day"><?= $date->format('d'); ?></div>
                             <?php foreach($eventsForDay as $event): ?> 
                         <div class="calendar__event">
-                            <?= (new Datetime ($event['start']))->format('H:i') ?> - <a href="vues/event.php?id=<?= $event['id_resa'];?>"><?= $event['nom_salle'];?></a> 
+                            <?= (new Datetime ($event['start']))->format('H:i') ?> - <a href="index.php?action=event&id=<?= $event['id_resa'];?>"><?= $event['nom_salle'];?></a> 
                         </div>
                     <?php endforeach; ?>
                 </td>
@@ -47,4 +45,4 @@
             </tr>
         <?php endfor; ?>
     </table> 
-<?php require 'vues/footer.php';?>
+</div>

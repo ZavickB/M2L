@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./Public/css/bootstrap.min.css">
     <link rel="stylesheet" href="./Public/css/calendar.css">
+    <link rel="stylesheet" href="./Public/css/stylesheet.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integritfnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
@@ -11,7 +12,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand" href="index.php?action=home">Accueil</a>
         
         <button id="showmenu"class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,3 +55,4 @@
             </ul>
         </div>
     </nav>
+<div class="main">

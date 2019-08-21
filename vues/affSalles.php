@@ -6,10 +6,7 @@ $req = $pdo->query("SELECT * FROM salles");
 $salles = $req->fetchall(); 
 // dd($salles);
 ?>
-
-<?php
-    include("header.php");
-?>
+<div class="jumbotron">
 <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
     <h1>Salles de classe</h1>
 </div>
@@ -40,7 +37,7 @@ $salles = $req->fetchall();
             </tr>
          <?php endforeach; ?>
 </tbody>
-
+</div>
 <?php
     include("footer.php");
  ?>
