@@ -33,7 +33,7 @@ switch($_GET['action']) {
     
     case "ajoutUser":
         ajoutUser($_POST);
-        header("Location: index.php?action=logging");
+        header("Location: index.php?action=auth");
         exit();
     break ;
         
