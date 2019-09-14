@@ -1,8 +1,9 @@
+<?php $admin = isAdmin($_SESSION['user']['role']);?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./Public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Public/css/lux/bootstrap.min.css">
     <link rel="stylesheet" href="./Public/css/calendar.css">
     <link rel="stylesheet" href="./Public/css/stylesheet.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integritfnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -23,7 +24,7 @@
             <ul class="navbar-nav mr-auto">
                 <?php if( isset($_SESSION['auth'])):?>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=account">Mon compte 
+                        <a class="nav-link" href="index.php?action=myAccount">Mon compte 
                         <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -33,7 +34,7 @@
                         <a class="nav-link" href="index.php?action=affSalles">Salles de classe</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=league">Ligues de sport</a>
+                        <a class="nav-link" href="index.php?action=affLigues">Ligues de sport</a>
                     </li> 
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=disconnect">Déconnexion</a>

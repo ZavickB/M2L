@@ -1,8 +1,9 @@
 <?php
 
 $pdo = get_pdo();
-$req = $pdo->query("SELECT * FROM ligues where id_ligue > '01' ");
-$ligues = $req->fetchall(); ?>
+$req = $pdo->query("SELECT * FROM ligues where id_ligue !='1'");
+$ligues = $req->fetchall();?> 
+
 <div class="jumbotron">
 <form action="index.php?action=ajoutUser" method="post">
 Votre nom <input type="text" name='nom_user' /> <br/>
@@ -13,9 +14,9 @@ Votre mot de passe <input type="text" name='mdp' /> <br/>
 Votre numero de téléphone (+33) <input type="tel" name="tel"
                                        minleght='9' maxlength="9"required> <br/>
    <div class="form-group">
-      <label for="exampleSelect1">Votre ligue </label>
+      <label for="exampleSelect1">Choisissez votre ligue dans la liste </label>
       <select name="id_ligue" class="form-control"> 
-          <?php foreach($tabligues as $uneligue){
+          <?php foreach($ligues as $uneligue){
              echo '<option value="'.$uneligue['id_ligue'].'">'.$uneligue['nom_ligue'].'</option>';}
           ?>
       </select>

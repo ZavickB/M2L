@@ -34,3 +34,5 @@ class Event {
         return new \DateTime($this->end); 
     }
 }
+;
+?>

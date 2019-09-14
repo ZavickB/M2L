@@ -4,7 +4,7 @@ $pdo = get_pdo();
 
 $req = $pdo->query("SELECT * FROM salles");
 $salles = $req->fetchall(); 
-// dd($salles);
+dd($salles);
 ?>
 <div class="jumbotron">
 <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
@@ -21,12 +21,12 @@ $salles = $req->fetchall();
         </tr>
     </thead>
     <tbody>
-         <?php foreach($salles as $salles):?>
-             <tr class="">
-                <th scope="row"><?= $salles['nom_salle'] ;?></th>
-                <td><?= $salles['id_salle'];?></td>
-                <td><?= $salles['nb_places'];?></td>
-                <td><?php if(informatisee($salles)) {
+         <?php foreach($salles as $salle):?>
+             <tr class="<?php if ($salle['bloquee']=='1'){echo 'table-danger';}?>">
+                <th scope="row"><?= $salle['nom_salle'] ;?></th>
+                <td><?= $salle['id_salle'];?></td>
+                <td><?= $salle['nb_places'];?></td>
+                <td><?php if(informatisee_salle($salle)) {
                        echo '<i class="fas fa-satellite-dish" 
                             <span style="font-weight: solid;">
                             <span style="color: Mediumslateblue;">
@@ -34,10 +34,16 @@ $salles = $req->fetchall();
                            ;}
                     ?>
                 </td>
+        <?php if($admin=='TRUE'){
+                    echo '<td><a href=""><img src="Public/images/edit.png"/></a></td>';
+                if($salle['bloquee']=='1'){
+                    echo'<td><a href="index.php?action=bloquer_salle"><img src="Public/images/lock.png"/></a></td> ';
+                }  
+                else{ 
+                    echo'<td><a href="index.php?action=bloquer_salle"><img src="Public/images/unlock.png"/></a></td>';}
+              ;}
+              else{ echo '';}?>
             </tr>
          <?php endforeach; ?>
 </tbody>
 </div>
-<?php
-    include("footer.php");
- ?>

@@ -129,18 +129,33 @@ function autorisation(){
 
 function auth($login,$mdp){
 //	echo select("SELECT count(*) FROM users where login='".$login."' and mdp='".$mdp."'");
-                                        return select("SELECT count(*) FROM users where login='".$login."' and mdp='".$mdp."'",0)==1;
+    return select("SELECT count(*) FROM users where login='".$login."' and mdp='".$mdp."'",0)==1;
 }
 
 function getUser($login,$mdp){
-					$tab= select("SELECT nom_user, pnom_user FROM users where login='$login' and mdp='$mdp'",1);
-					return $tab['nom_user']." ".$tab['pnom_user'];
+    $tab= select("SELECT * FROM users where login='$login' and mdp='$mdp'",1);
+    return $tab;
 }
 
-
+/*
+ *Insere un nouvel utilisateur
+ */
 function ajoutUser($tbData){
-        $tbData['role']='0';
-	ecrire("users",$tbData);
+    $tbData['role']='0';
+    ecrire("users",$tbData);
+}
+
+/*
+ * return TRUE if user is admin
+ */
+function isAdmin($role){
+    if($role == '1'){
+        $admin='TRUE'    
+    ;}
+    else{
+        $admin='FALSE'
+    ;} 
+    return $admin;
 }
 
 
@@ -149,6 +164,10 @@ function getLigues(){
     return select('SELECT id_ligue, nom_ligue FROM ligues');
 }
 
+function userLigue($login,$mdp){
+    $tab= select("SELECT * FROM ligues WHERE id_ligue = ( SELECT id_ligue FROM users where login='$login' and mdp='$mdp'",1);
+    return $tab['nom_ligue'] ." (". $tab['abreviation'] .")";
+}   
 //=== SALLES ===========================================
 /**
  * retourne vrai si la classe passée en parametre est occupée en ce moment
@@ -175,7 +194,7 @@ function reservee(array $salles): bool{
  * @param array $salles
  * @return boolean
  */
-function bloquee(array $salles): bool{
+function bloquee_salle(array $salles): bool{
     $pdo = get_pdo();
     $req = $pdo->prepare("SELECT * FROM salles WHERE bloquee IS NOT NULL AND id=?");
     $req->execute([$salles['id']]);
@@ -193,7 +212,7 @@ function bloquee(array $salles): bool{
  * @param array $salles
  * @return boolean
  */
-function informatisee(array $salles): bool{ 
+function informatisee_salle(array $salles): bool{ 
     if($salles['informatisee']){
         return true;
     } else{

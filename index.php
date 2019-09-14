@@ -21,7 +21,7 @@ switch($_GET['action']) {
         else {
         include('vues/header.php');
         include('vues/logging.php');
-        include('vues/footer.php');;
+        include('vues/footer.php');
         }
     break;
 
@@ -42,13 +42,24 @@ switch($_GET['action']) {
         header("Location: index.php?action=auth");
         exit();
     break ;
-        
+
     case "affSalles":
         include('vues/header.php');
         include('vues/affSalles.php');
         include('vues/footer.php');
     break;
 
+    case "affLigues":
+        include('vues/header.php');
+        include('vues/affLigues.php');
+        include('vues/footer.php');
+    break;
+    
+    case "myAccount":
+        include('vues/header.php');
+        include('vues/myAccount.php');
+        include('vues/footer.php');
+    break;
     case "formAuth":
         include('vues/header.php');
         include('vues/logging.php');
@@ -66,7 +77,15 @@ switch($_GET['action']) {
         include('vues/event.php');
         include('vues/footer.php');
     break;
-
+    
+    case "bloquer_salle":
+        if($salle['bloquee']=='1'){
+        $salle['bloquee']='0';}
+        elseif($salle['bloquee']=='0') {
+        $salle['bloquee']='1';}
+        header("Location: index.php?action=affSalles");
+    break;
+        
 }
     
 ?>
