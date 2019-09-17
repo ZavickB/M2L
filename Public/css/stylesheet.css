@@ -2,6 +2,9 @@
 /* BackGround */
 body {
     background-image: url(../images/back.jpg);
+    background-repeat: none;
+    background-position:  center;
+    
 }
 
 /* 404 */ 

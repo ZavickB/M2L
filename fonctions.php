@@ -113,110 +113,34 @@ function e404(){
 /********************************************************
 *** FONCTIONS METIER ************************************
 ********************************************************/
-
-//=== UTILISATEURS ===========================================
-function autorisation(){
-/*	return !(!isset($_SESSION['auth'])
-						and $_GET['action']!='affAlbum'
-						and $_GET['action']!='auth'
-						and $_GET['action']!='formUser'
-						and $_GET['action']!='ajoutUser') ;*/
-    return (isset($_SESSION['auth'])
-						or $_GET['action']=='affSalles'
-                                                or $_GET['action']=='auth'
-    						or $_GET['action']=='addUser');
-}
-
-function auth($login,$mdp){
-//	echo select("SELECT count(*) FROM users where login='".$login."' and mdp='".$mdp."'");
-    return select("SELECT count(*) FROM users where login='".$login."' and mdp='".$mdp."'",0)==1;
-}
-
-function getUser($login,$mdp){
-    $tab= select("SELECT * FROM users where login='$login' and mdp='$mdp'",1);
-    return $tab;
-}
-
-/*
- *Insere un nouvel utilisateur
- */
-function ajoutUser($tbData){
-    $tbData['role']='0';
-    ecrire("users",$tbData);
-}
-
-/*
- * return TRUE if user is admin
- */
-function isAdmin($role){
-    if($role == '1'){
-        $admin='TRUE'    
-    ;}
-    else{
-        $admin='FALSE'
-    ;} 
-    return $admin;
-}
-
-
-//=== LIGUES ===========================================
-function getLigues(){
-    return select('SELECT id_ligue, nom_ligue FROM ligues');
-}
-
-function userLigue($login,$mdp){
-    $tab= select("SELECT * FROM ligues WHERE id_ligue = ( SELECT id_ligue FROM users where login='$login' and mdp='$mdp'",1);
-    return $tab['nom_ligue'] ." (". $tab['abreviation'] .")";
-}   
-//=== SALLES ===========================================
-/**
- * retourne vrai si la classe passée en parametre est occupée en ce moment
- *
- * @param array $salles
- * @return boolean
- */
-
-function reservee(array $salles): bool{
-    $pdo = get_pdo();
-    $req = $pdo->prepare("SELECT * FROM reservation WHERE NOW() BETWEEN hr_debut AND hr_fin ");
-    $req->execute([$salles['id']]);
-    $reservation = $req->fetch();
-    if($reservation){
-        return true;
-    } else{
-        return false;
-    }
+$action = $_GET['action'];
+function genererPage($action){
+    include('vues/header.php');
+    include('vues/'.$action.'.php');
+    include('vues/footer.php');
 }
 
 /**
- * retourne vrai si la classe passée en parametre renseignée comme verrouillée dans la BDD
+ * inclue la page demandée
  *
- * @param array $salles
- * @return boolean
+ * @param string $vue
+ * @param array $parameters
+ * @return vue
  */
-function bloquee_salle(array $salles): bool{
-    $pdo = get_pdo();
-    $req = $pdo->prepare("SELECT * FROM salles WHERE bloquee IS NOT NULL AND id=?");
-    $req->execute([$salles['id']]);
-    $est_bloquee = $req->fetch();
-    if($est_bloquee){
-        return true;
-    } else{
-        return false;
-    }
+function render(string $vue, $parameters =[]){
+    extract($parameters);
+    require "vues/$vue.php";
 }
-
 /**
- * Retourne vrai si la salle est informatisée
+ * utilise la fonction render pour afficher la page entièrement (header puis body et ensuite footer)
  *
- * @param array $salles
- * @return boolean
+ * @param string $pageName
+ * @param array $parameters
+ * @return void
  */
-function informatisee_salle(array $salles): bool{ 
-    if($salles['informatisee']){
-        return true;
-    } else{
-        return false;
-    }
+function pages(string $pageName,array $parameters =[]){
+    extract($parameters);
+    render('header',$parameters);
+    render($pageName,$parameters);
+    render('footer');
 }
-;?>

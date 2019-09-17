@@ -1,11 +1,3 @@
-<?php
-
-$pdo = get_pdo();
-
-$req = $pdo->query("SELECT * FROM salles");
-$salles = $req->fetchall(); 
-dd($salles);
-?>
 <div class="jumbotron">
 <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
     <h1>Salles de classe</h1>
@@ -34,13 +26,13 @@ dd($salles);
                            ;}
                     ?>
                 </td>
-        <?php if($admin=='TRUE'){
+            <?php if($admin=='TRUE'){
                     echo '<td><a href=""><img src="Public/images/edit.png"/></a></td>';
                 if($salle['bloquee']=='1'){
-                    echo'<td><a href="index.php?action=bloquer_salle"><img src="Public/images/lock.png"/></a></td> ';
+                    echo'<td><a href="index.php?action=bloquer_salle"><img src="Public/images/locked.png"/></a></td> ';
                 }  
                 else{ 
-                    echo'<td><a href="index.php?action=bloquer_salle"><img src="Public/images/unlock.png"/></a></td>';}
+                    echo'<td><a href="index.php?action=bloquer_salle"><img src="Public/images/unlocked.png"/></a></td>';}
               ;}
               else{ echo '';}?>
             </tr>

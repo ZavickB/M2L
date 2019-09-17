@@ -41,7 +41,7 @@
                     </li>
                 <?php else: ?>     
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=formAuth">Se connecter</a>
+                        <a class="nav-link" href="index.php?action=logging">Se connecter</a>
                     </li>
                 <?php endif; ?>
                                     <!-- echo '<a id="login" href="index.php?action=logging">Connexion</a>';

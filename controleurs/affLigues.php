@@ -1,0 +1,2 @@
+<?php
+    genererPage($action);

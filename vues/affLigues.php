@@ -25,10 +25,10 @@ $ligues = $req->fetchall();
         <?php if($admin=='TRUE'){
                     echo '<td><a href=""><img src="Public/images/edit.png"/></a></td>';
                 if($ligue['bloquee']=='1'){
-                    echo'<td><a href=""><img src="Public/images/lock.png"/></a></td>';
+                    echo'<td><img src="Public/images/locked.png"/></td>';
                 }  
                 else{ 
-                    echo'<td><a href=""><img src="Public/images/unlock.png"/></a></td>';}
+                    echo'<td><img id="lock"src="Public/images/unlocked.png"/></td>';}
               ;}
               else{ echo '';}?>
              </tr>

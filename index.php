@@ -1,15 +1,14 @@
 <?php
 session_start();
-include("fonctions.php");
+include('fonctions.php');
+include('modeles/users.php');
 if(!isset($_GET['action'])){
     $_GET['action']="home";
 };
 
 switch($_GET['action']) {
     case "home":
-        include('vues/header.php');
-        include('vues/home.php');
-        include('vues/footer.php');
+        include('controleurs/home.php');
     break;
 
     case "auth":
@@ -19,9 +18,7 @@ switch($_GET['action']) {
             header("Location: index.php?action=home");
         }
         else {
-        include('vues/header.php');
-        include('vues/logging.php');
-        include('vues/footer.php');
+            include('controleurs/logging.php');
         }
     break;
 
@@ -31,10 +28,7 @@ switch($_GET['action']) {
     break;
 
     case "addUser":
-        $tabligues=getLigues();
-        include('vues/header.php');
-        include('vues/addUser.php');
-        include('vues/footer.php');
+        include('controleurs/addUser.php'); 
     break ;
     
     case "ajoutUser":
@@ -44,38 +38,27 @@ switch($_GET['action']) {
     break ;
 
     case "affSalles":
-        include('vues/header.php');
-        include('vues/affSalles.php');
-        include('vues/footer.php');
+        include('controleurs/affSalles.php');
     break;
 
     case "affLigues":
-        include('vues/header.php');
-        include('vues/affLigues.php');
-        include('vues/footer.php');
+        include('controleurs/affLigues.php');
     break;
     
     case "myAccount":
-        include('vues/header.php');
-        include('vues/myAccount.php');
-        include('vues/footer.php');
+        include('controleurs/myAccount.php');
     break;
-    case "formAuth":
-        include('vues/header.php');
-        include('vues/logging.php');
-        include('vues/footer.php');
+
+    case "logging":
+        include('controleurs/logging.php');
     break;
     
     case "calendar":
-        include('vues/header.php');
-        include('vues/calendar.php');
-        include('vues/footer.php');
+        include('controleurs/calendar.php');
     break;
     
     case "event":
-        include('vues/header.php');
-        include('vues/event.php');
-        include('vues/footer.php');
+        include('controleurs/event.php');
     break;
     
     case "bloquer_salle":
