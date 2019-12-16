@@ -1,2 +1,3 @@
 <?php
-genererPage($action);
+
+pages('home' ,['title' => 'M2L - Accueil']);

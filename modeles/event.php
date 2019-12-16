@@ -1,8 +1,9 @@
 <?php
 //dd($_GET, $_POST);
 $pdo = get_pdo();
-require 'SRC/Calendar/Events.php';
+require 'modeles/calendar/Events.php';
 $events = new Calendar\Events($pdo);
+
 
 if(!isset($_GET['id'])) { 
     header('location:404.php');

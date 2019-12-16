@@ -1,15 +1,16 @@
 <?php
 
-$pdo = get_pdo();
-
-$req = $pdo->query("SELECT * FROM salles");
-$salles = $req->fetchall(); 
-dd($salles);
-
 /********************************************************
 ***     FONCTIONS    ************************************
 ********************************************************/
 
+/*
+ *Insere une nouvelle salle
+ */
+function ajoutSalle($tbData){
+    $tbData['bloquee']='0';
+    ecrire("salles",$tbData);
+}
 
 /**
  * retourne vrai si la classe passée en parametre est occupée en ce moment
@@ -30,24 +31,14 @@ function reservee(array $salles): bool{
     }
 }
 
-/**
- * retourne vrai si la classe passée en parametre renseignée comme verrouillée dans la BDD
- *
- * @param array $salles
- * @return boolean
- */
-function bloquee_salle(array $salles): bool{
-    $pdo = get_pdo();
-    $req = $pdo->prepare("SELECT * FROM salles WHERE bloquee IS NOT NULL AND id=?");
-    $req->execute([$salles['id']]);
-    $est_bloquee = $req->fetch();
-    if($est_bloquee){
-        return true;
-    } else{
-        return false;
-    }
+
+function bloquerSalle($idSalle) {
+    requete("UPDATE salles SET bloquee='1' WHERE id_salle=".$idSalle);
 }
 
+function debloquerSalle($idSalle){
+    requete("UPDATE salles SET bloquee='0' WHERE id_salle=".$idSalle);
+}
 /**
  * Retourne vrai si la salle est informatisée
  *
@@ -58,6 +49,19 @@ function informatisee_salle(array $salles): bool{
     if($salles['informatisee']){
         return true;
     } else{
+        return false;
+    }
+}
+
+/**
+ * 
+ * @param bool $checkbox
+ * @return bool
+ */
+function coché_informatisée(bool $checkbox): bool{
+    if ($checkbox == 1) {
+        return true;
+    } else {
         return false;
     }
 }

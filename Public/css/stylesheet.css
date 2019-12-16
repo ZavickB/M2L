@@ -1,10 +1,8 @@
-
-/* BackGround */
-body {
-    background-image: url(../images/back.jpg);
-    background-repeat: none;
-    background-position:  center;
-    
+@media (max-width: 767.98px) {
+    body{font-size: 17px;}
+}
+body{
+    background-color: #F7F7F9;
 }
 
 /* 404 */ 
@@ -27,4 +25,23 @@ body {
 td img{
     width:20px;
     height: 20px;
+}
+.sticky {
+  position: fixed;
+  top: 50;
+  width: 100%;
+  z-index: 2;
+}
+
+.jumbotron {
+  padding: 5vh;
+}
+
+.content{
+    z-index: 1;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 90px;
 }

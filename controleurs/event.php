@@ -1,3 +1,4 @@
 <?php
 require ('modeles/event.php');
-genererPage($action);
+
+pages('event',['title' => 'M2L - Votre réservation', 'admin' => $admin, 'event' => $event]);

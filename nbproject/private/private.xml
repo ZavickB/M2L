@@ -3,18 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/PPE1/controleurs/calendar.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/controleurs/affSalles.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/index.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/modeles/calendar.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/modeles/users.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/controleurs/event.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/modeles/event.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/vues/event.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/fonctions.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/vues/header.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/controleurs/logging.php</file>
-            <file>file:/Applications/MAMP/htdocs/PPE1/vues/Calendar.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/index.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/vues/header.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/vues/addEvent.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/vues/addForm.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/vues/affSalles.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/vues/affUsers.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/vues/myAccount.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/vues/affLigues.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/vues/editUser.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/Public/css/lux/bootstrap.min.css</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/modeles/users.php</file>
+            <file>file:/D:/VIRGILE/LOGICIELS/XAmpp/htdocs/projects/M2L/controleurs/editUser.php</file>
         </group>
     </open-files>
 </project-private>

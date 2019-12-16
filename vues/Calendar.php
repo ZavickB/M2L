@@ -1,26 +1,29 @@
+<div class="jumbotron">
+<div>
 
-<div class="jumbotron"> 
-<div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
+    <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
         <h1><?= $month->toString(); ?></h1>
         <div>
             <a href="index.php?action=calendar&month=<?= $month->previousMonth()->month; ?>&year=<?= $month->previousMonth()->year; ?>" class="btn btn-primary">&lt;</a>
             <a href="index.php?action=calendar&month=<?= $month->nextMonth()->month; ?>&year=<?= $month->nextMonth()->year; ?>" class="btn btn-primary">&gt;</a>
         </div>
     </div>
-        
+
     <table class="calendar__table calendar__table--<?= $weeks; ?>weeks">
         <?php for ($i = 0; $i < $weeks; $i++): ?>
             <tr>
                 <?php foreach ($month->days as $k => $day):
-                    $date = (clone $start)->modify("+". ($k + $i * 7) ."days");
-                    $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
+                    $currentDay = (clone $firstDay)->modify("+". ($k + $i * 7) ."days");
+                    $eventsForDay = $events[$currentDay->format('Y-m-d')] ?? [];
+                    $isToday = date('Y-m-d') === $currentDay->format('Y-m-d');
                     ?>
-                <td class="<?= $month->withinMonth($date) ? '' : 'calendar__othermonth'; ?> <?= start ? 'is-today' : ''; ?>">
+                <td class="<?= $month->withinMonth($currentDay) ? '' : 'calendar__othermonth'; ?> <?= $isToday ? 'is-today' : ''; ?>">
                     <?php if ($i === 0):?>
                         <div class="calendar__weekday"><?= $day; ?></div>
                     <?php endif; ?>
-                        <div class="calendar__day"><?= $date->format('d'); ?></div>
-                            <?php foreach($eventsForDay as $event): ?> 
+                    <a class="calendar__day" href="index.php?action=addEvent&date=<?= $currentDay->format("Y-m-d"); ?>"><?= $currentDay->format("d"); ?></a>
+                    <?php foreach ($eventsForDay as $event): ?>
+                        <?php $req->execute([$event['id_salle']]); $classroom = $req->fetch(); ?>
                         <div class="calendar__event">
                             <?= (new Datetime ($event['start']))->format('H:i') ?> - <a href="index.php?action=event&id=<?= $event['id_resa'];?>"><?= $event['nom_salle'];?></a> 
                         </div>
@@ -29,5 +32,6 @@
                 <?php endforeach; ?>
             </tr>
         <?php endfor; ?>
-    </table> 
+    </table>
 </div>
+</div>    

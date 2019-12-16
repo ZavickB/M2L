@@ -1,2 +1,3 @@
 <?php
-genererPage($action);
+
+pages('logging',['title' => 'M2L - Connexion']);
