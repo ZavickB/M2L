@@ -1,7 +1,7 @@
 <?php
 namespace calendar;
 
-require 'modeles\calendar\Event.php';
+require 'Event.php';
 
 /**
  * classe qui gère les évènements
