@@ -2,6 +2,7 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="./IMAGES/LOGO M2L/Orage2.png">    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./Public/css/lux/bootstrap.min.css">
     <link rel="stylesheet" href="./Public/css/calendar.css">
@@ -11,7 +12,7 @@
   </head>
   <body>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.php?action=home"><img src="./IMAGES/LOGO M2L/Orage2.png" style="height : 8vh"></a>
+        <a class="navbar-brand" href="index.php?action=home"><img src="./IMAGES/LOGO M2L/Orage2.png" style="height : 6vh"></a>
 
         
         <button id="showmenu"class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">

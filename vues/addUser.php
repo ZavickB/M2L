@@ -11,9 +11,9 @@
    <div class="form-group">
       <label for="exampleSelect1">Choisissez votre ligue dans la liste </label>
       <select name="id_ligue" class="form-control"> 
-          <?php foreach($ligues as $uneligue){
+          <?php foreach($ligues as $uneLigue){
              if($uneLigue['bloquee']==0){
-                echo '<option value="'.$uneligue['id_ligue'].'">'.$uneligue['nom_ligue'].'</option>'; 
+                echo '<option value="'.$uneLigue['id_ligue'].'">'.$uneLigue['nom_ligue'].'</option>'; 
              }
           }
           ?>
