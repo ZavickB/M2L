@@ -2,7 +2,7 @@
 <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
     <h1>Salles de classe</h1>
     <?php if($_SESSION['user']['role']=='1'){
-        echo '<a href="index.php?action=addSalle" class="btn btn-primary"> + </a>';}?>
+        echo '<a class="btn btn-primary" data-toggle="modal" data-target="#myModal"> + </a>';}?>
 </div>
 
 <table class="table table-hover">
@@ -43,4 +43,40 @@
             </tr>
          <?php endforeach; ?>
 </tbody>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="jumbotron">
+            <form action ="index.php?action=ajoutSalle"  method="post">
+                <h1>Ajouter une nouvelle salle </h1>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Nom de la salle </label>
+                    <input type="text" class="form-control" name="nom_salle">
+                </div>
+                <div class="form-group col-md-6     ">
+                    <label for="exampleSelect1" name="" >Nombre de places</label>
+                    <select name="nb_places" class="form-control"> 
+                      <option value="15">15</option>
+                      <option value="30">30</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" name="informatisee" id="customSwitch1"
+                            <?= isset($salle['informatisee']) ? coché_informatisée($salle['informatisee'])? ' checked=""' : '' : '';   ?> >
+                        <label for="customSwitch1" class="custom-control-label">Informatisée</label>
+                    </div>
+                </div>
+            <input type="submit" class="btn btn-primary" value='Envoyer'/>
+            </form>
+        </div>
+    </div>
+
+  </div>
 </div>

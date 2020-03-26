@@ -17,6 +17,12 @@ class Event{
 
     private $id_salle;
 
+    private $libele;
+
+    public function getLibele (): string{
+        return $this->libelle ?? '';
+    }
+
     public function getDescription (): string{
         return $this->description ?? '';
     }
@@ -36,7 +42,7 @@ class Event{
     public function getId_salle (): int{
         return $this->id_salle;
     }
-
+    
     public function setNom (string $name){
         $this->nom_salle = $name;
     }
@@ -52,6 +58,7 @@ class Event{
     public function setEnd (string $end){
         $this->end = $end;
     }
+
 }
 
 ?>

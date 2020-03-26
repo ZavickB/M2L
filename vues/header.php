@@ -21,7 +21,7 @@
 
         <div class="collapse navbar-collapse" id="navbarColor03">
             <ul class="navbar-nav mr-auto">
-                
+               
                 <?php if(isset($_SESSION['auth'])):?>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=myAccount">Mon compte 
@@ -40,6 +40,9 @@
                     echo '
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=affUsers">Utilisateurs</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="index.php?action=affEquips">Equipements</a>
                     </li>';} 
                 ;?>     
                     <li class="nav-item">

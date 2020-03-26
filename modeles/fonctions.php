@@ -8,7 +8,7 @@
  * @return PDO
  */
 function get_pdo(): PDO {
-    return new PDO('mysql:host=localhost;dbname=ppe1', 'root', 'root', [
+    return new PDO('mysql:host=localhost;dbname=ppe1', 'root', 's8IwdahZWlMH2lS4', [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
@@ -20,7 +20,7 @@ function get_pdo(): PDO {
 =========================================*/
 function requete($sql){
 //echo $sql;
-	$cnx=mysqli_connect("localhost","root","root","ppe1");
+	$cnx=mysqli_connect("localhost","root","s8IwdahZWlMH2lS4","ppe1");
 	$res=mysqli_query($cnx,$sql);
 	$tab=explode(" ", $sql);
 	$action=$tab[0];
@@ -135,4 +135,21 @@ function pages(string $pageName,array $parameters =[]){
     render($pageName,$parameters);
     render('footer');
 }
-
+function authverif(){
+        if(auth($_POST['login'], $_POST['mdp'])) {
+            if(isBloque($_POST['login'], $_POST['mdp'])){
+                $_SESSION['flash']['danger'] = "Vous ou votre ligue êtes bloqué(e), veuillez contacter l'administration";
+                header("Location: index.php?action=logging");
+            }
+            else{
+            $_SESSION['user']=getUser($_POST['login'],$_POST['mdp']);
+            $_SESSION['auth']=TRUE;
+            $_SESSION['flash']['success'] = "Vous êtes maintenant connecté(e)";
+            header("Location: index.php?action=home");
+            }
+        }        
+        else {
+            $_SESSION['flash']['danger'] = "Erreur identifiant(s), veuillez réessayer ! ";
+            header("Location: index.php?action=logging");
+        }
+}        

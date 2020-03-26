@@ -2,7 +2,7 @@
 <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
     <h1>Utilisateurs</h1>
     <?php if($admin=='TRUE'){
-        echo '<a href="index.php?action=addUSer" class="btn btn-primary"> + </a>';}?>
+        echo '<a class="btn btn-primary" data-toggle="modal" data-target="#myModal"> + </a>';}?>
 </div>
     <table class="table table-hover">
     <thead>
@@ -36,4 +36,37 @@
          <?php endforeach; ?>
 
     </tbody>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="jumbotron">
+            <form action="index.php?action=ajoutUser" method="post">
+                <h1>Ajouter un nouvel utilisateur</h1>
+                <div class="form-group" >Nom <input type="text" name='nom_user' class="form-control"/> <br/> </div>
+                <div class="form-group" >Prénom <input type="text" name='pnom_user' class="form-control"/> <br/> </div>
+                <div class="form-group" >E-mail <input type="email" name='mail' class="form-control"/> <br/> </div>
+                <div class="form-group" >Login <input type="text" name="login" class="form-control"/> <br/> </div>
+                <div class="form-group" >Mot de passe <input type="password" name='mdp' class="form-control"/> <br/> </div>
+                <div class="form-group" >Numero de téléphone (+33) <input type="tel" name="tel"
+                                                       minleght='9' maxlength="10" required class="form-control"> <br/> </div>
+                <div class="form-group">
+                   <label for="exampleSelect1">Choisissez la ligue dans la liste </label>
+                   <select name="id_ligue" class="form-control"> 
+                       <?php foreach($ligues as $uneLigue){
+                          if($uneLigue['bloquee']==0){
+                             echo '<option value="'.$uneLigue['id_ligue'].'">'.$uneLigue['nom_ligue'].'</option>'; 
+                          }
+                       }
+                       ;?>
+                   </select>
+                </div>
+                <input type="submit" class="btn btn-primary" value='Envoyer'/>
+            </form>
+        </div>
+    </div>
+  </div>
 </div>

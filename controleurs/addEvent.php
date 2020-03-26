@@ -1,6 +1,8 @@
 <?php
+require 'controleurs/equipements.php';
 include 'modeles/salles.php';
 require 'modeles/calendar/Events.php';
+
 //logged_only();
 $pdo = get_pdo();
 $data = [
@@ -22,10 +24,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $nb_places = $data['nb_places'];
         $titre = $data['titre'];
         $description = $data['description'];
+        $id_equip = $data['idequip'];
         $user=$_SESSION['user']['id_user'];
         $result=1;
         // utilisation de la procédure stockée
-        $req = $pdo->prepare("CALL resSalle(?,?,?,?,?,?,?)");
+        $req = $pdo->prepare("CALL resSalle(?,?,?,?,?,?,?,?)");
         $req->execute([ $start,
                         $end,
                         $informatisee,
@@ -33,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         $nb_places,
                         $titre,
                         $description,
-                                    ]);
+                        $id_equip ]);
         $row=$req->fetch();
                     if ($row['result']==1){
                        header('Location: index.php?action=calendar');
@@ -48,4 +51,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }  
 
 }  
-pages('addEvent',['title' => 'M2N - Nouvel évènement', 'data' => $data, 'errors' => $errors]);
+pages('addEvent',['title' => 'M2N - Nouvel évènement', 'data' => $data, 'equipements' =>$equipements ,  'errors' => $errors]);

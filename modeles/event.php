@@ -1,6 +1,7 @@
 <?php
 //dd($_GET, $_POST);
 $pdo = get_pdo();
+require 'controleurs/equipements.php';
 require 'modeles/calendar/Events.php';
 $events = new Calendar\Events($pdo);
 
@@ -14,3 +15,4 @@ try{
 } catch(\Exception $e){
     e404();
 }
+

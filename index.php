@@ -38,10 +38,6 @@ switch($_GET['action']) {
         logout();
         header('location: index.php?action=home');
     break;
-
-    case "addUser":
-        include('controleurs/addUser.php'); 
-    break ;
     
     case "ajoutUser":
         ajoutUser($_POST);
@@ -49,15 +45,8 @@ switch($_GET['action']) {
         exit();
     break ;
 
-    case "addSalle":
-        include('controleurs/addSalle.php');
-    break;
-
-    case "addLigue":
-        include('controleurs/addLigue.php');
-    break;
-
     case "ajoutSalle":
+        require('modeles/salles.php');
         ajoutSalle($_POST);
         header("Location: index.php?action=affSalles");
         exit();
@@ -70,6 +59,10 @@ switch($_GET['action']) {
         exit();
     break ; 
     
+    case "affEquips":
+        include('controleurs/affEquips.php');
+    break;
+        
     case "affSalles":
         include('controleurs/affSalles.php');
     break;
@@ -90,8 +83,8 @@ switch($_GET['action']) {
         include('controleurs/calendar.php');
     break;
     
-    case "event":
-        include('controleurs/event.php');
+    case "affEvent":
+        include('controleurs/affEvent.php');
     break;
 
     case "addEvent":
@@ -154,5 +147,5 @@ switch($_GET['action']) {
         include('controleurs/editUser.php');
     break;
 }
-
+;
 ?>

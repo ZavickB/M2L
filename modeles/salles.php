@@ -19,18 +19,20 @@ function ajoutSalle($tbData){
  * @return boolean
  */
 
-function reservee(array $salles): bool{
+/*function reservee(array $salles): bool{
     $pdo = get_pdo();
     $req = $pdo->prepare("SELECT * FROM reservation WHERE NOW() BETWEEN hr_debut AND hr_fin ");
     $req->execute([$salles['id']]);
     $reservation = $req->fetch();
-    if($reservation){
+    print_r($reservation);
+    return $reservation;
+/*    if($reservation){
         return true;
     } else{
         return false;
     }
 }
-
+*/
 
 function bloquerSalle($idSalle) {
     requete("UPDATE salles SET bloquee='1' WHERE id_salle=".$idSalle);

@@ -53,6 +53,18 @@
                     <?php endif; ?>
                 </div>
             </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                   <label for="exampleSelect1">Choisissez un equipement dans la liste </label>
+                   <select name="idequip" class="form-control"> 
+                    <option value="">-- Choississez une option --</option>
+                       <?php foreach($equipements as $unEquipement){
+                             echo '<option value="'.$unEquipement['id_equip'].'">'.$unEquipement['libelle'].'</option>'; 
+                       }
+                       ;?>
+                   </select>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <div class="custom-control custom-switch">

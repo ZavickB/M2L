@@ -25,7 +25,7 @@
                     <?php foreach ($eventsForDay as $event): ?>
                         <?php $req->execute([$event['id_salle']]); $classroom = $req->fetch(); ?>
                         <div class="calendar__event">
-                            <?= (new Datetime ($event['start']))->format('H:i') ?> - <a href="index.php?action=event&id=<?= $event['id_resa'];?>"><?= $event['nom_salle'];?></a> 
+                            <?= (new Datetime ($event['start']))->format('H:i') ?> - <a href="index.php?action=affEvent&id=<?= $event['id_resa'];?>"><?= $event['nom_salle'];?></a> 
                         </div>
                     <?php endforeach; ?>
                 </td>

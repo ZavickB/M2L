@@ -3,7 +3,7 @@
     <h1>Ligues</h1>
 
     <?php if($_SESSION['user']['role']=='1'){
-            echo '<a href="index.php?action=addLigue" class="btn btn-primary"> + </a>';}
+            echo '<a class="btn btn-primary" data-toggle="modal" data-target="#myModal"> + </a>';}
     ?> 
 </div>
 <table class="table table-hover">
@@ -40,4 +40,24 @@
             </tr>
          <?php endforeach; ?>
 </tbody>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="jumbotron">
+            <form action="index.php?action=ajoutLigue" method="post">
+                <h1> Créer une nouvelle ligue</h1>
+                    <div class="form-group" >Nom de la ligue <small class="text-muted-succes"> sans accent(s) ni caractères spéciaux.</small>
+                        <input type="text" name='nom_ligue' class="form-control"/> </div>
+                    <div class="form-group">Abréviation<input type="text" name='abreviation' class="form-control"/> </div>
+                    <div class="form-group">Contact<input type="number" name='contact' class="form-control"/> </div>
+
+                <input type="submit" class="btn btn-primary" value='Envoyer'/>
+            </form>
+        </div>
+    </div>
+  </div>
 </div>
